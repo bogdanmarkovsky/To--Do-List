@@ -16,7 +16,6 @@
     font-size: 70px;
     font-family: Edge Display;
     font-weight: 700;
-
 }
 
 .todo__input {
@@ -28,8 +27,31 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    margin-bottom: 50px;
+    margin-bottom: 15px;
     padding: 10px;
+}
+
+.todo__add-button {
+    display: flex;
+    padding: 0;
+    justify-content: center;
+    align-items: flex-end;
+    width: 30%;
+    min-width: 140px;
+    height: 35px;
+    background-color: rgb(197, 197, 56);
+    margin-bottom: 40px;
+    border: 3px solid black;
+    border-radius: 5px;
+    font-family: Edge Display;
+    font-size: 20px;
+    text-align: center;
+    vertical-align: center;
+}
+
+.todo__add-button:hover {
+    cursor: pointer;
+    opacity: 0.5;
 }
 
 .todo__container {
@@ -71,10 +93,17 @@
     .todo__heading {
         font-size: 40px;
     }  
+
     .todo__input {
         height: 50px;
         font-size: 20px;
     }
+
+    .todo__add-button {
+    
+
+    }
+
     .todo__task {
         min-height: 50px;
     }
