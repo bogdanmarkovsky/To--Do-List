@@ -54,7 +54,7 @@
     opacity: 0.5;
 }
 
-.todo__container {
+.todo__task-container {
     position: relative;
     width: 70%;
     height: fit-content;
@@ -72,7 +72,7 @@
     margin-bottom: 20px;
 }
 
-.todo__close-button {
+.todo__delete-button {
     position: absolute;
     top: 0px;
     right: -25px;
@@ -84,7 +84,7 @@
     background-size: contain;
 }
 
-.todo__close-button:hover {
+.todo__delete-button:hover {
     cursor: pointer;
     opacity: 0.5;
 }
@@ -97,11 +97,6 @@
     .todo__input {
         height: 50px;
         font-size: 20px;
-    }
-
-    .todo__add-button {
-    
-
     }
 
     .todo__task {
