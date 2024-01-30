@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TODO List</title>
+  </head>
+  <body class="page">
+	<h1 class="todo__heading">Simple TODO List</h1>
+    <input class="todo__input" placeholder="Write your TODO-task here"></input>
+    <button class="todo__add-button">Add task to list</button>
+    <template id="todo-template">
+      <div class="todo__task-container">
+        <div class="todo__task"></div>
+        <button button class="todo__delete-button"></button>
+      </div>
+    </template>
+    <script src="./src/index.js"></script>
+  </body>
+</html>
