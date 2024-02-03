@@ -54,6 +54,12 @@
     opacity: 0.5;
 }
 
+.todo__add-button:disabled {
+    background-color: transparent;
+    cursor: auto;
+    opacity: 1;
+}
+
 .todo__task-container {
     position: relative;
     width: 70%;

@@ -1,35 +1,53 @@
 import './style.css';
 
-const addButton = document.querySelector('.todo__add-button');
 let uniqueKey = +localStorage.getItem('uniqueKey') || 0;
-let todoListArr;
+let todoListArr = [];
+const todoInput = document.querySelector('.todo__input');
+const addButton = document.querySelector('.todo__add-button');
 addButton.addEventListener('click', addNewTodoTask);
+todoInput.addEventListener('input', () => {
+    checkInput();
+});
+getTodoTasksFromStorage();
 
-if (JSON.parse(localStorage.getItem('todoList')) !== null) {
-    todoListArr = JSON.parse(localStorage.getItem('todoList'));
-    todoListArr.forEach(element => {
-        renderTodoTask(element);
-    });
-} else {
-    todoListArr = [];
+function getTodoTasksFromStorage() {
+    let localStorageTodoList = JSON.parse(localStorage.getItem('todoList'));
+    if (localStorageTodoList !== null) {
+        todoListArr = localStorageTodoList;
+        todoListArr.forEach((todoTask) => {
+            renderTodoTask(todoTask);
+        });
+    }
 }
 
-function renderTodoTask(object) {
+function renderTodoTask(todoObject) {
     const pageContainer = document.querySelector('.page');
     const todoTemplate = document.getElementById('todo-template').content;
     const todoElement = todoTemplate.querySelector('.todo__task-container').cloneNode(true);
-    todoElement.querySelector('.todo__task').textContent = object['description'];
+    todoElement.querySelector('.todo__task').textContent = todoObject['description'];
+    addDeleteButton(todoElement);
+    pageContainer.append(todoElement);
+}
+
+function addDeleteButton(todoElement) {
     const deleteButton = todoElement.querySelector('.todo__delete-button');
     deleteButton.addEventListener('click', (event) => {
         const currentTodoTask = event.target.closest('.todo__task-container');
-        let deleteIndex = todoListArr.findIndex((element) => {
-            return element['key'] === object.key;
+        let deleteIndex = todoListArr.findIndex((todoElement) => {
+            return todoElement['key'] === todoElement.key;
         });
         todoListArr.splice(deleteIndex,1);
         localStorage.setItem('todoList', JSON.stringify(todoListArr));
         currentTodoTask.remove();
     });
-    pageContainer.append(todoElement);
+}
+
+function checkInput() {
+    if (todoInput.value === '') {
+        addButton.setAttribute('disabled', true);
+    } else {
+        addButton.removeAttribute('disabled');
+    }
 }
 
 function addNewTodoTask () {
@@ -41,9 +59,8 @@ function addNewTodoTask () {
         'description': todoInput.value,
     };
     todoListArr.push(newTodoTask);
-    renderTodoTask(newTodoTask);
     localStorage.setItem('todoList', JSON.stringify(todoListArr));
+    renderTodoTask(newTodoTask);
     todoInput.value = '';
+    checkInput();
 }
-
-
