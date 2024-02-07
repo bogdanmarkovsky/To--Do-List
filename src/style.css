@@ -96,7 +96,38 @@
     opacity: 0.5;
 }
 
+.scroll-to-top {
+    font-weight: bold;
+    padding: 0;
+    margin: 0;
+    padding: 3px;
+    font-family: Edge Dislay;
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color: pink;
+    display: none;
+    position: fixed;
+    right: 3%;
+    bottom: 2%;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+}
+
+.scroll-to-top:hover {
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.scroll-to-top_active {
+    display: block;
+
+}
+
 @media screen and (max-width: 600px) {
+
+    .todo__task-container {
+        width: 60%;
+    }
     .todo__heading {
         font-size: 40px;
     }  
@@ -109,5 +140,19 @@
     .todo__task {
         min-height: 50px;
     }
-   
+
+}
+
+@media screen and (min-width: 1440px) {
+  
+    .scroll-to-top {
+        right: 150px;
+    }   
+}
+
+@media screen and (min-width: 2000px) {
+  
+    .scroll-to-top {
+        right: 400px;
+    }   
 }
